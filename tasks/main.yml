@@ -17,6 +17,12 @@
   apt:
     name: elasticsearch
 
+- name: Increase vm.max_map_count
+  sysctl:
+    name: vm.max_map_count
+    value: 262144
+    reload: yes
+
 - name: Copy elasticsearch configuration
   template:
     src: elasticsearch.yml.j2
