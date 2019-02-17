@@ -1,0 +1,36 @@
+---
+
+- name: Add Elastic APT key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: Add Elastic APT repo
+  apt_repository:
+    repo: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}.x/apt stable main"
+    filename: "elastic"
+
+- name: Install JRE
+  apt:
+    name: default-jre
+
+- name: Install Elasticsearch
+  apt:
+    name: elasticsearch
+
+- name: Copy elasticsearch configuration
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  notify: elasticsearch restart
+
+- name: Copy JVM options
+  template:
+    src: jvm.options.j2
+    dest: /etc/elasticsearch/jvm.options
+  notify: elasticsearch restart
+
+- name: Enable Elasticsearch service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: true

@@ -1,0 +1,4 @@
+node.name: {{ elasticsearch_node_name | default(inventory_hostname) }}
+path.data: {{ elasticsearch_path_data }}
+path.logs: {{ elasticsearch_path_logs }}
+network.bind_host: {{ elasticsearch_network_bind_host}}
