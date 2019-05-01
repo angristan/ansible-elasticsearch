@@ -17,5 +17,5 @@ It has very basic configuration (see the templates folder).
       tags: elasticsearch
   vars:
     elasticsearch_jvm_heapsize: 512m
-    elasticsearch_network_bind_host: 0.0.0.0
+    elasticsearch_network_host: 0.0.0.0
 ```

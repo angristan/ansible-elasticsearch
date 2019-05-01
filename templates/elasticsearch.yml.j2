@@ -1,4 +1,7 @@
 node.name: {{ elasticsearch_node_name | default(inventory_hostname) }}
+{% if elasticsearch_version >= 7 %}
+cluster.initial_master_nodes: {{ elasticsearch_node_name | default(inventory_hostname) }}
+{% endif %}
 path.data: {{ elasticsearch_path_data }}
 path.logs: {{ elasticsearch_path_logs }}
-network.bind_host: {{ elasticsearch_network_bind_host}}
+network.host: {{ elasticsearch_network_host }}
