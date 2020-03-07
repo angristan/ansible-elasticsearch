@@ -9,10 +9,6 @@
     repo: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}.x/apt stable main"
     filename: "elastic"
 
-- name: Install JRE
-  apt:
-    name: default-jre
-
 - name: Install Elasticsearch
   apt:
     name: elasticsearch
