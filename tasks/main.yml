@@ -1,13 +1,12 @@
 ---
-
 - name: Add Elastic APT key
   apt_key:
     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 - name: Add Elastic APT repo
   apt_repository:
-    repo: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}.x/apt stable main"
-    filename: "elastic"
+    repo: 'deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}.x/apt stable main'
+    filename: 'elastic'
 
 - name: Install Elasticsearch
   apt:
@@ -16,7 +15,7 @@
 - name: Increase vm.max_map_count
   sysctl:
     name: vm.max_map_count
-    value: 262144
+    value: '262144'
     reload: yes
 
 - name: Copy elasticsearch configuration
