@@ -22,12 +22,14 @@
   template:
     src: elasticsearch.yml.j2
     dest: /etc/elasticsearch/elasticsearch.yml
+    mode: '644'
   notify: elasticsearch restart
 
 - name: Copy JVM options
   template:
     src: jvm.options.j2
     dest: /etc/elasticsearch/jvm.options
+    mode: '644'
   notify: elasticsearch restart
 
 - name: Enable Elasticsearch service
