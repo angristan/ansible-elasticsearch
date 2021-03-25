@@ -25,10 +25,11 @@
     mode: '644'
   notify: elasticsearch restart
 
-- name: Copy JVM options
+- name: Copy JVM heap options
+  when: elasticsearch_jvm_heapsize | length > 0
   template:
-    src: jvm.options.j2
-    dest: /etc/elasticsearch/jvm.options
+    src: heap.options.j2
+    dest: /etc/elasticsearch/jvm.options.d/heap.options
     mode: '644'
   notify: elasticsearch restart
 
