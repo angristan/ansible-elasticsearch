@@ -5,3 +5,4 @@ cluster.initial_master_nodes: {{ elasticsearch_node_name | default(inventory_hos
 path.data: {{ elasticsearch_path_data }}
 path.logs: {{ elasticsearch_path_logs }}
 network.host: {{ elasticsearch_network_host }}
+xpack.security.enabled: {{ elasticsearch_xpack_security_enabled }}
